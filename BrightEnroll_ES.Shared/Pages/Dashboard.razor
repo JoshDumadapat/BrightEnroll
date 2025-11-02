@@ -1,0 +1,259 @@
+@page "/dashboard"
+@inject NavigationManager Navigation
+@layout EmptyLayout
+
+<link href="_content/BrightEnroll_ES.Shared/dashboard.css" rel="stylesheet" />
+
+<div class="dashboard-container">
+  <!-- Sidebar -->
+    <div class="dashboard-sidebar">
+  <div class="sidebar-logo">
+    <img src="_content/BrightEnroll_ES.Shared/images/brighthenlogo.png" alt="BrightEnroll" width="140" />
+   </div>
+
+     <nav class="sidebar-nav">
+      <a href="/dashboard" class="nav-item active">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/>
+   </svg>
+           <span>Dashboard</span>
+</a>
+ <a href="#" class="nav-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+  </svg>
+ <span>Enrollment</span>
+  </a>
+       <a href="#" class="nav-item">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+        </svg>
+   <span>Student Record</span>
+        </a>
+    <a href="#" class="nav-item">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+     <path d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4zm0 1h8a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z"/>
+     </svg>
+     <span>Academics</span>
+     </a>
+  <a href="#" class="nav-item">
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+     <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
+ <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+     <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+   </svg>
+ <span>Finance</span>
+     </a>
+   <a href="#" class="nav-item">
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+     <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+   </svg>
+  <span>Human Resource</span>
+          </a>
+   </nav>
+    </div>
+
+    <!-- Main Content -->
+  <div class="dashboard-main">
+        <!-- Header -->
+ <div class="dashboard-header-card">
+      <div class="dashboard-header">
+   <h1>Dashboard</h1>
+<div class="user-profile-dropdown">
+   <div class="user-profile" @onclick="ToggleDropdown">
+   <div class="avatar"></div>
+   <div class="user-info">
+ <div class="user-name">Moni Roy</div>
+     <div class="user-role">Admin</div>
+  </div>
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="dropdown-arrow" viewBox="0 0 16 16">
+     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+   </svg>
+ </div>
+   @if (showDropdown)
+ {
+     <div class="profile-dropdown-menu">
+       <a href="#" class="dropdown-item">
+   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+     </svg>
+         Profile
+       </a>
+       <a href="#" class="dropdown-item">
+         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+         </svg>
+Settings
+    </a>
+     <div class="dropdown-divider"></div>
+       <a href="#" class="dropdown-item" @onclick="HandleLogout">
+ <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+ <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+<path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+         </svg>
+   Logout
+       </a>
+     </div>
+   }
+   </div>
+ </div>
+        </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+ <!-- Total Enrolled -->
+    <div class="stat-card">
+   <div class="stat-content">
+    <div class="stat-label">Total Enrolled</div>
+ <div class="stat-value">40,689</div>
+  <svg class="stat-chart stat-chart-blue" viewBox="0 0 100 30" preserveAspectRatio="none">
+  <path d="M0,20 Q25,15 50,18 T100,12" fill="none" stroke="currentColor" stroke-width="2"/>
+    </svg>
+    </div>
+ <div class="stat-icon stat-icon-blue">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8Zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022ZM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816ZM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0Zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"/>
+  </svg>
+    </div>
+   </div>
+
+    <!-- Total Employees -->
+ <div class="stat-card">
+  <div class="stat-content">
+    <div class="stat-label">Total Employees</div>
+ <div class="stat-value">1,204</div>
+  <svg class="stat-chart stat-chart-purple" viewBox="0 0 100 30" preserveAspectRatio="none">
+  <path d="M0,18 Q25,22 50,16 T100,14" fill="none" stroke="currentColor" stroke-width="2"/>
+  </svg>
+    </div>
+ <div class="stat-icon stat-icon-purple">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+  <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
+  </svg>
+    </div>
+       </div>
+
+       <!-- Pending Applications -->
+     <div class="stat-card">
+     <div class="stat-content">
+         <div class="stat-label">Pending Applications</div>
+ <div class="stat-value">2040</div>
+       <svg class="stat-chart stat-chart-yellow" viewBox="0 0 100 30" preserveAspectRatio="none">
+       <path d="M0,18 Q25,20 50,16 T100,14" fill="none" stroke="currentColor" stroke-width="2"/>
+  </svg>
+ </div>
+ <div class="stat-icon stat-icon-yellow">
+   <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+<path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+   </svg>
+       </div>
+</div>
+
+<!-- Total Tuition Collected -->
+<div class="stat-card">
+    <div class="stat-content">
+ <div class="stat-label">Total Tuition Collected</div>
+    <div class="stat-value">&#8369;89,000</div>
+  <svg class="stat-chart stat-chart-green" viewBox="0 0 100 30" preserveAspectRatio="none">
+  <path d="M0,22 Q25,19 50,21 T100,15" fill="none" stroke="currentColor" stroke-width="2"/>
+ </svg>
+   </div>
+      <div class="stat-icon stat-icon-green">
+  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 16 16">
+     <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9H5.5zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518l.087.02z"/>
+ <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+     <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11zm0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"/>
+   </svg>
+  </div>
+ </div>
+    </div>
+
+  <!-- Charts Section -->
+<div class="charts-grid">
+       <div class="chart-card">
+    <div class="chart-header">
+ <div>
+     <div class="chart-subtitle">Statistics</div>
+         <h3 class="chart-title">Total income</h3>
+   </div>
+  <div class="chart-legend">
+   <span class="legend-item">
+  <span class="legend-dot legend-dot-pink"></span>
+ Product
+   </span>
+   <span class="legend-item">
+<span class="legend-dot legend-dot-blue"></span>
+ Subscriptions
+   </span>
+   </div>
+      </div>
+     <div class="chart-placeholder">
+  <svg viewBox="0 0 400 200" class="income-chart">
+    <path d="M20,100 Q60,80 100,90 T180,60 Q220,140 260,100 T340,80" 
+        fill="none" stroke="#FF6B9D" stroke-width="3" opacity="0.8"/>
+ <path d="M20,110 Q60,100 100,105 T180,90 Q220,120 260,95 T340,85" 
+    fill="none" stroke="#4F46E5" stroke-width="3" opacity="0.8"/>
+     <line x1="180" y1="0" x2="180" y2="200" stroke="#E5E7EB" stroke-width="1" stroke-dasharray="5,5"/>
+      </svg>
+  </div>
+     </div>
+
+ <div class="chart-card">
+      <div class="chart-header">
+      <div>
+    <div class="chart-subtitle">Statistics</div>
+ <h3 class="chart-title">Total student each type</h3>
+   </div>
+    </div>
+     <div class="donut-chart-container">
+ <div class="donut-chart">
+      <svg viewBox="0 0 200 200" class="donut-svg">
+   <circle cx="100" cy="100" r="80" fill="none" stroke="#E5E7EB" stroke-width="30"/>
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#1E40AF" stroke-width="30" 
+ stroke-dasharray="314 502" transform="rotate(-90 100 100)"/>
+  <circle cx="100" cy="100" r="80" fill="none" stroke="#60A5FA" stroke-width="30" 
+  stroke-dasharray="126 502" stroke-dashoffset="-314" transform="rotate(-90 100 100)"/>
+      <circle cx="100" cy="100" r="80" fill="none" stroke="#93C5FD" stroke-width="30" 
+stroke-dasharray="62 502" stroke-dashoffset="-440" transform="rotate(-90 100 100)"/>
+  </svg>
+   <div class="donut-center">
+      <div class="donut-label">Total Count</div>
+    <div class="donut-value">1,375</div>
+   </div>
+    </div>
+     <div class="donut-legend">
+ <div class="donut-legend-item">
+      <span class="donut-dot" style="background: #1E40AF;"></span>
+        <span>New 513</span>
+    </div>
+  <div class="donut-legend-item">
+  <span class="donut-dot" style="background: #93C5FD;"></span>
+     <span>Transferee 741</span>
+         </div>
+     <div class="donut-legend-item">
+ <span class="donut-dot" style="background: #60A5FA;"></span>
+   <span>Returnee 121</span>
+</div>
+    </div>
+     </div>
+    </div>
+     </div>
+  </div>
+</div>
+
+@code {
+    private bool showDropdown = false;
+
+    private void ToggleDropdown()
+    {
+        showDropdown = !showDropdown;
+    }
+
+    private void HandleLogout()
+    {
+        // Add your logout logic here
+     Navigation.NavigateTo("/login");
+    }
+}
