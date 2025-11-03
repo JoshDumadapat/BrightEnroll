@@ -106,16 +106,22 @@
 </label>
     <InputSelect @bind-Value="registrationModel.MotherTongue" 
     class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base bg-white">
-         <option value="">Select</option>
+ <option value="">Select</option>
   <option value="Tagalog">Tagalog</option>
    <option value="Cebuano">Cebuano</option>
  <option value="Ilocano">Ilocano</option>
  <option value="Hiligaynon">Hiligaynon</option>
-          <option value="Waray">Waray</option>
+  <option value="Waray">Waray</option>
     <option value="Other">Other</option>
       </InputSelect>
      <ValidationMessage For="@(() => registrationModel.MotherTongue)" class="text-red-500 text-xs mt-1" />
-            </div>
+  @if (registrationModel.MotherTongue == "Other")
+     {
+ <InputText @bind-Value="registrationModel.MotherTongueOther" 
+   class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base mt-2"
+     placeholder="Please specify mother tongue" />
+            }
+         </div>
          </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -405,6 +411,12 @@ class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:r
     <ValidationMessage For="@(() => registrationModel.GuardianRelationship)" class="text-red-500 text-xs mt-1" />
       </div>
      </div>
+     @if (registrationModel.GuardianRelationship == "Other")
+     {
+      <InputText @bind-Value="registrationModel.GuardianRelationshipOther" 
+  class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base mt-2"
+    placeholder="Please specify relationship" />
+}
      </div>
 
       <hr class="my-8 border-gray-200" />
@@ -606,7 +618,8 @@ private bool isSubmitting = false;
  public string Sex { get; set; } = "";
 
         [Required(ErrorMessage = "Mother tongue is required")]
-        public string MotherTongue { get; set; } = "";
+    public string MotherTongue { get; set; } = "";
+        public string MotherTongueOther { get; set; } = "";
 
   public string IsIPCommunity { get; set; } = "";
     public string IPCommunitySpecify { get; set; } = "";
@@ -658,6 +671,7 @@ private bool isSubmitting = false;
 
      [Required(ErrorMessage = "Relationship is required")]
    public string GuardianRelationship { get; set; } = "";
+        public string GuardianRelationshipOther { get; set; } = "";
 
   // Enrollment Details
         [Required(ErrorMessage = "Student type is required")]
