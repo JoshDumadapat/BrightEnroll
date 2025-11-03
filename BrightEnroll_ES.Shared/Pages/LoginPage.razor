@@ -3,100 +3,146 @@
 @inject NavigationManager Navigation
 @layout EmptyLayout
 
-<div class="login-page-split">
+<div class="flex min-h-screen">
     <!-- Left Side (Image) -->
-  <div class="login-left">
- <img src="_content/BrightEnroll_ES.Shared/images/kid.png" alt="School Child" class="login-left-image" />
+    <div class="flex-1 bg-gray-100 flex items-center justify-center p-0 overflow-hidden relative">
+        <img src="_content/BrightEnroll_ES.Shared/images/kid.png" alt="School Child" class="w-full h-full object-cover absolute top-0 left-0" />
     </div>
 
     <!-- Right Side (Login Form) -->
-<div class="login-right">
-        <div class="login-card-split">
-        <div class="text-center mb-4">
- <img src="_content/BrightEnroll_ES.Shared/images/brighthenlogo.png" width="200" alt="BrightEnroll Logo" />
-      </div>
+    <div class="flex-1 flex items-center justify-center p-12 bg-gray-50">
+        <div class="bg-white rounded-3xl shadow-2xl p-10 w-full max-w-lg border border-gray-100">
+ <div class="text-center mb-6">
+        <img src="_content/BrightEnroll_ES.Shared/images/brighthenlogo.png" alt="BrightEnroll Logo" class="mx-auto" style="width: 200px" />
+ </div>
 
-      <h3 class="text-center mt-3">Log in to your account</h3>
-<p class="text-center text-muted mb-4">Access your account and start managing student enrollments<br />with ease and confidence.</p>
+            <h3 class="text-center mt-4 text-gray-800 font-bold text-3xl mb-2">Log in to your account</h3>
+   <p class="text-center text-gray-500 text-sm mb-6 leading-relaxed">Access your account and start managing student enrollments<br />with ease and confidence.</p>
 
-     @if (!string.IsNullOrEmpty(errorMessage))
-  {
-   <div class="alert alert-danger" role="alert">
-  @errorMessage
-  </div>
+@if (!string.IsNullOrEmpty(errorMessage))
+     {
+     <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4" role="alert">
+         @errorMessage
+     </div>
+ }
+
+            <EditForm Model="@loginModel" OnValidSubmit="@LoginUser">
+    <DataAnnotationsValidator />
+
+  <div class="mb-4">
+         <label for="username" class="block text-gray-700 text-sm font-medium mb-2">Enter username <span class="text-red-500">*</span></label>
+    <div class="flex">
+ <span class="inline-flex items-center justify-center px-4 bg-white border border-r-0 border-gray-300 rounded-l-lg">
+       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="text-gray-500">
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+          <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+         </span>
+        <InputText id="username" 
+             @bind-Value="loginModel.Username" 
+        placeholder="Username" 
+     class="flex-1 px-4 py-2.5 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed text-base" 
+     disabled="@isLoading"
+           autocomplete="username" />
+ </div>
+          <ValidationMessage For="@(() => loginModel.Username)" class="text-red-500 text-xs mt-1" />
+        </div>
+
+       <div class="mb-4">
+     <label for="password" class="block text-gray-700 text-sm font-medium mb-2">Enter password <span class="text-red-500">*</span></label>
+       <div class="flex">
+          <span class="inline-flex items-center justify-center px-4 bg-white border border-r-0 border-gray-300 rounded-l-lg">
+  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" class="text-gray-500">
+   <path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
+    <path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
+             </svg>
+             </span>
+        <InputText id="password" 
+    type="password"
+                 @bind-Value="loginModel.Password" 
+         placeholder="Password" 
+           class="flex-1 px-4 py-2.5 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-100 disabled:cursor-not-allowed text-base" 
+   disabled="@isLoading"
+      autocomplete="current-password" />
+    </div>
+   <ValidationMessage For="@(() => loginModel.Password)" class="text-red-500 text-xs mt-1" />
+       </div>
+
+   <div class="flex items-center mb-4">
+      <InputCheckbox id="rememberMe" 
+              @bind-Value="loginModel.RememberMe" 
+     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 disabled:opacity-50 disabled:cursor-not-allowed" 
+       disabled="@isLoading" />
+                    <label class="ml-2 text-sm text-gray-700 font-medium" for="rememberMe">
+   Remember me
+         </label>
+       </div>
+
+      <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-4 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 mb-4" disabled="@isLoading">
+          @if (isLoading)
+               {
+         <span class="inline-flex items-center justify-center">
+          <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+         <span>LOGGING IN...</span>
+   </span>
+     }
+ else
+             {
+       <span>LOG IN</span>
+    }
+     </button>
+    </EditForm>
+
+            <div class="text-center">
+     <a href="/student-register" class="text-gray-600 text-base underline hover:text-blue-600 transition-colors duration-200 cursor-pointer">Student Registration</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Mobile Responsive Styles -->
+<style>
+    @@media (max-width: 992px) {
+        .flex.min-h-screen {
+  flex-direction: column;
+      }
+
+     .flex-1.bg-gray-100 {
+  min-height: 250px;
+     max-height: 300px;
+        }
+
+        .flex-1.flex.items-center {
+            flex: 2;
+            padding: 2rem 1.5rem;
     }
 
-   <EditForm Model="@loginModel" OnValidSubmit="@LoginUser">
-         <DataAnnotationsValidator />
+        .bg-white.rounded-3xl {
+ padding: 2.5rem 2rem;
+        }
+    }
 
-     <div class="form-group mb-3">
- <label for="username" class="form-label">Enter username <span class="text-danger">*</span></label>
-        <div class="input-group">
-   <span class="input-group-text username-icon-wrapper">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-</svg>
-  </span>
-       <InputText id="username" 
-        @bind-Value="loginModel.Username" 
-      placeholder="Username" 
-  class="form-control" 
-  disabled="@isLoading"
-       autocomplete="username" />
- </div>
-<ValidationMessage For="@(() => loginModel.Username)" class="text-danger small" />
-  </div>
+    @@media (max-width: 576px) {
+        .bg-white.rounded-3xl {
+  padding: 2rem 1.5rem;
+        }
 
-          <div class="form-group mb-3">
-<label for="password" class="form-label">Enter password <span class="text-danger">*</span></label>
-     <div class="input-group">
-  <span class="input-group-text password-icon-wrapper">
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-<path d="M5.338 1.59a61.44 61.44 0 0 0-2.837.856.481.481 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.725 10.725 0 0 0 2.287 2.233c.346.244.652.42.893.533.12.057.218.095.293.118a.55.55 0 0 0 .101.025.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
-<path d="M9.5 6.5a1.5 1.5 0 0 1-1 1.415l.385 1.99a.5.5 0 0 1-.491.595h-.788a.5.5 0 0 1-.49-.595l.384-1.99a1.5 1.5 0 1 1 2-1.415z"/>
-</svg>
-     </span>
-      <InputText id="password" 
-     type="password"
-    @bind-Value="loginModel.Password" 
-   placeholder="Password" 
-   class="form-control" 
-disabled="@isLoading"
- autocomplete="current-password" />
-    </div>
-    <ValidationMessage For="@(() => loginModel.Password)" class="text-danger small" />
-</div>
-
-        <div class="form-check mb-3">
-<InputCheckbox id="rememberMe" 
-   @bind-Value="loginModel.RememberMe" 
-     class="form-check-input" 
-   disabled="@isLoading" />
-  <label class="form-check-label" for="rememberMe">
-      Remember me
-</label>
-  </div>
-
- <button type="submit" class="btn btn-primary w-100 py-2 mb-3" disabled="@isLoading" style="border-radius: 25px;">
-   @if (isLoading)
-         {
-         <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-   <span>LOGGING IN...</span>
+        .bg-white.rounded-3xl img {
+            width: 120px;
       }
-   else
- {
-       <span>LOG IN</span>
-            }
-  </button>
-</EditForm>
 
-    <div class="text-center">
-             <a href="/student-register" class="text-decoration-underline" style="color: #6c757d; cursor: pointer;">Student Registration</a>
-    </div>
-        </div>
-</div>
-</div>
+     .bg-white.rounded-3xl h3 {
+     font-size: 1.4rem;
+        }
+
+        .bg-white.rounded-3xl p {
+  font-size: 0.85rem;
+      }
+    }
+</style>
 
 @code {
     private LoginModel loginModel = new();
@@ -105,30 +151,30 @@ disabled="@isLoading"
 
     async Task LoginUser()
     {
-  isLoading = true;
-     errorMessage = "";
+        isLoading = true;
+        errorMessage = "";
 
-   try
+        try
         {
-         // TODO: call API login endpoint
- await Task.Delay(1000); // Simulate API call 
-        // Temporary: Navigate to dashboard for demo
-       Navigation.NavigateTo("/dashboard");
-        }
+     // TODO: call API login endpoint
+    await Task.Delay(1000); // Simulate API call 
+            // Temporary: Navigate to dashboard for demo
+            Navigation.NavigateTo("/dashboard");
+    }
     catch (Exception ex)
-    {
-        errorMessage = $"An error occurred: {ex.Message}";
-        }
-        finally
         {
-  isLoading = false;
+            errorMessage = $"An error occurred: {ex.Message}";
   }
+        finally
+ {
+       isLoading = false;
+        }
     }
 
     public class LoginModel
     {
         [Required(ErrorMessage = "Username is required")]
-        [MinLength(3, ErrorMessage = "Username must be at least 3 characters")]
+      [MinLength(3, ErrorMessage = "Username must be at least 3 characters")]
         public string Username { get; set; } = "";
 
         [Required(ErrorMessage = "Password is required")]

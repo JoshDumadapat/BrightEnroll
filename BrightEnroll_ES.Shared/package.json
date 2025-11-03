@@ -1,0 +1,12 @@
+{
+  "name": "brightenroll-es-shared",
+  "version": "1.0.0",
+  "description": "Tailwind CSS setup for BrightEnroll ES",
+  "scripts": {
+ "build:css": "tailwindcss -i ./wwwroot/app.css -o ./wwwroot/app.min.css --minify",
+    "watch:css": "tailwindcss -i ./wwwroot/app.css -o ./wwwroot/app.min.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}

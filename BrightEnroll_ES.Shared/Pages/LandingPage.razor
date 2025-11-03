@@ -2,33 +2,32 @@
 @inject NavigationManager Navigation
 @layout EmptyLayout
 
-<div class="landing-container">
-    <div class="landing-card-center">
-     <div class="text-center">
- <img src="_content/BrightEnroll_ES.Shared/images/brighthenlogo.png" width="280" alt="BrightEnroll Logo" class="mb-3" />
-
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-300 p-8">
+    <div class="bg-white rounded-2xl shadow-lg p-14 w-full max-w-md text-center border border-blue-100">
+        <div class="mb-10">
+        <img src="_content/BrightEnroll_ES.Shared/images/brighthenlogo.png" alt="BrightEnroll Logo" class="mx-auto w-72" />
         </div>
 
-        <button class="btn btn-primary w-100 mb-3 landing-btn" @onclick="GoToLogin">
-LOG IN
-   </button>
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base py-3 px-8 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 tracking-widest mb-3" @onclick="GoToLogin">
+            LOG IN
+    </button>
 
-    <div class="text-center">
- <a href="/student-register" class="landing-link" @onclick="GoToRegister" @onclick:preventDefault>
+        <div class="text-center">
+            <a href="/student-register" class="text-gray-600 text-base underline hover:text-blue-600 transition-colors duration-200 cursor-pointer" @onclick="GoToRegister" @onclick:preventDefault>
   Student Registration
-  </a>
-  </div>
- </div>
+          </a>
+    </div>
+    </div>
 </div>
 
 @code {
     void GoToLogin()
     {
- Navigation.NavigateTo("/login");
+        Navigation.NavigateTo("/login");
     }
 
     void GoToRegister()
-  {
-Navigation.NavigateTo("/student-register");
+    {
+    Navigation.NavigateTo("/student-register");
 }
 }
